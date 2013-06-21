@@ -43,6 +43,7 @@
     <Compile Include="Model\GlobalSection.cs" />
     <Compile Include="Model\ISolutionItem.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="ProjectParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
