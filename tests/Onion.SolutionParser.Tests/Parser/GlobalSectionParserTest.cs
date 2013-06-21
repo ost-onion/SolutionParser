@@ -26,7 +26,7 @@ namespace Onion.SolutionParser.Tests.Parser
         }
 
         [Test]
-        public void Parse_should_return_IEnumerable_of_GlobalSection_objects_correct_count()
+        public void Parse_should_return_IEnumerable_of_GlobalSection_objects_with_correct_count()
         {
             var sections = Parser.Parse();
             var count = sections.Count();
