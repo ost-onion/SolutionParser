@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Parser\GlobalSectionParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Fixtures\NDriven.sln">

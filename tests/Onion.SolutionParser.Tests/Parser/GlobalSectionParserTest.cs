@@ -16,12 +16,7 @@ namespace Onion.SolutionParser.Tests.Parser
         [TestFixtureSetUp]
         public void BeforeAll()
         {
-            var fixturesPath = Path.GetFullPath("Fixtures");
-            var slnPath = fixturesPath + Path.DirectorySeparatorChar + "NDriven.sln";
-            using (var reader = new StreamReader(slnPath))
-            {
-                SolutionContents = reader.ReadToEnd();
-            }
+            SolutionContents = Utility.GetFixtureContents("NDriven.sln");
         }
 
         [SetUp]
