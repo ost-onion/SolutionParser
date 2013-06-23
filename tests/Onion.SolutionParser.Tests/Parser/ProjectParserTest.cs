@@ -32,5 +32,22 @@ namespace Onion.SolutionParser.Tests.Parser
             Assert.IsInstanceOf<IEnumerable<Project>>(sections);
             Assert.AreEqual(11, count);
         }
+
+        [Test]
+        public void Parse_should_set_ProjectSection_if_present_on_project()
+        {
+            var nuget = Parser.Parse().First(p => p.Name == ".nuget");
+            Assert.NotNull(nuget.ProjectSection);
+        }
+
+        [Test]
+        public void Parse_should_set_entries_on_ProjectSection()
+        {
+            var nuget = Parser.Parse().First(p => p.Name == ".nuget");
+            var entries = nuget.ProjectSection.Entries;
+            Assert.AreEqual(".nuget\\NuGet.Config", entries[".nuget\\NuGet.Config"]);
+            Assert.AreEqual(".nuget\\NuGet.exe", entries[".nuget\\NuGet.exe"]);
+            Assert.AreEqual(".nuget\\NuGet.targets", entries[".nuget\\NuGet.targets"]);
+        }
     }
 }

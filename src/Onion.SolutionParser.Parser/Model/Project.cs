@@ -16,5 +16,6 @@ namespace Onion.SolutionParser.Parser.Model
         public string Name { get; set; }
         public string Path { get; set; }
         public Guid Guid { get; private set; }
+        public ProjectSection ProjectSection { get; set; }
     }
 }
