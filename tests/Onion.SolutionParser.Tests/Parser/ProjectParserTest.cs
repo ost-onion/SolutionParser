@@ -34,10 +34,28 @@ namespace Onion.SolutionParser.Tests.Parser
         }
 
         [Test]
+        public void Parse_should_hydrate_TypeGuid_Name_Path_and_Guid_properties()
+        {
+            var section = Parser.Parse().First();
+            Assert.NotNull(section.TypeGuid);
+            Assert.IsNotEmpty(section.Name);
+            Assert.IsNotEmpty(section.Path);
+            Assert.NotNull(section.Guid);
+        }
+
+        [Test]
         public void Parse_should_set_ProjectSection_if_present_on_project()
         {
             var nuget = Parser.Parse().First(p => p.Name == ".nuget");
             Assert.NotNull(nuget.ProjectSection);
+        }
+
+        [Test]
+        public void Parse_should_hydrate_Name_and_ProjectSectionType_of_section()
+        {
+            var nuget = Parser.Parse().First(p => p.Name == ".nuget");
+            Assert.IsNotEmpty(nuget.ProjectSection.Name);
+            Assert.NotNull(nuget.ProjectSection.Type);
         }
 
         [Test]
