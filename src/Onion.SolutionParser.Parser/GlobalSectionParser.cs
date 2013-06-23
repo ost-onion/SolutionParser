@@ -8,7 +8,7 @@ namespace Onion.SolutionParser.Parser
     {
         private readonly string _solutionContents;
         private static readonly Regex GlobalPattern = new Regex(@"GlobalSection\((?<name>[\w]+)\)\s+=\s+(?<type>(?:post|pre)Solution)(?<content>.*?)EndGlobalSection", RegexOptions.Singleline | RegexOptions.ExplicitCapture);
-        private static readonly Regex EntryPattern = new Regex(@"^\s+(?<key>.*?)=(?<value>.*?)$", RegexOptions.ExplicitCapture | RegexOptions.Multiline);
+        private static readonly Regex EntryPattern = new Regex(@"^\s*(?<key>.*?)=(?<value>.*?)$", RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.Multiline);
 
         public GlobalSectionParser(string solutionContents)
         {
