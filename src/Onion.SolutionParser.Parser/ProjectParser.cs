@@ -23,31 +23,45 @@ namespace Onion.SolutionParser.Parser
             while (match.Success)
             {
                 var project = CreateProjectFromMatch(match);
-                var content = match.Groups["content"].Value.Trim();
-                if (!string.IsNullOrEmpty(content))
-                {
-                    var sectionMatch = SectionPattern.Match(content);
-                    while (sectionMatch.Success)
-                    {
-                        var projectType = (sectionMatch.Groups["type"].Value == "preProject")
-                                  ? ProjectSectionType.PreProject
-                                  : ProjectSectionType.PostProject;
-                        var section = new ProjectSection(sectionMatch.Groups["name"].Value, projectType);
-                        project.ProjectSection = section;
-                        var entries = sectionMatch.Groups["entries"].Value;
-                        var entryMatch = EntryPattern.Match(entries);
-                        while (entryMatch.Success)
-                        {
-                            var entryKey = entryMatch.Groups["key"].Value.Trim();
-                            var entryValue = entryMatch.Groups["value"].Value.Trim();
-                            section.Entries[entryKey] = entryValue;
-                            entryMatch = entryMatch.NextMatch();
-                        }
-                        sectionMatch = sectionMatch.NextMatch();
-                    }
-                }
+                ParseProjectContent(match, project);
                 yield return project;
                 match = match.NextMatch();
+            }
+        }
+
+        private static void ParseProjectContent(Match match, Project project)
+        {
+            var content = match.Groups["content"].Value.Trim();
+            if (string.IsNullOrEmpty(content)) return;
+            var sectionMatch = SectionPattern.Match(content);
+            while (sectionMatch.Success)
+            {
+                var section = CreateProjectSectionFromMatch(sectionMatch);
+                project.ProjectSection = section;
+                ParseSectionEntries(sectionMatch, section);
+                sectionMatch = sectionMatch.NextMatch();
+            }
+        }
+
+        private static ProjectSection CreateProjectSectionFromMatch(Match sectionMatch)
+        {
+            var projectType = (sectionMatch.Groups["type"].Value == "preProject")
+                                  ? ProjectSectionType.PreProject
+                                  : ProjectSectionType.PostProject;
+            var section = new ProjectSection(sectionMatch.Groups["name"].Value, projectType);
+            return section;
+        }
+
+        private static void ParseSectionEntries(Match sectionMatch, ProjectSection section)
+        {
+            var entries = sectionMatch.Groups["entries"].Value;
+            var entryMatch = EntryPattern.Match(entries);
+            while (entryMatch.Success)
+            {
+                var entryKey = entryMatch.Groups["key"].Value.Trim();
+                var entryValue = entryMatch.Groups["value"].Value.Trim();
+                section.Entries[entryKey] = entryValue;
+                entryMatch = entryMatch.NextMatch();
             }
         }
 
