@@ -4,20 +4,19 @@ using Onion.SolutionParser.Parser.Model;
 
 namespace Onion.SolutionParser.Parser
 {
-    public class GlobalSectionParser
+    public class GlobalSectionParser : SolutionItemParserBase<GlobalSection>
     {
-        private readonly string _solutionContents;
         private static readonly Regex GlobalPattern = new Regex(@"GlobalSection\((?<name>[\w]+)\)\s+=\s+(?<type>(?:post|pre)Solution)(?<content>.*?)EndGlobalSection", RegexOptions.Singleline | RegexOptions.ExplicitCapture);
         private static readonly Regex EntryPattern = new Regex(@"^\s*(?<key>.*?)=(?<value>.*?)$", RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.Multiline);
 
-        public GlobalSectionParser(string solutionContents)
+        public GlobalSectionParser(string solutionContents) : base (solutionContents)
         {
-            _solutionContents = solutionContents;
+            
         }
 
-        public IEnumerable<GlobalSection> Parse()
+        public new IEnumerable<GlobalSection> Parse()
         {
-            var match = GlobalPattern.Match(_solutionContents);
+            var match = GlobalPattern.Match(SolutionContents);
             while (match.Success)
             {
                 var section = CreateGlobalSectionFromMatch(match);
