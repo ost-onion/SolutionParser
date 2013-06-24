@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Onion.SolutionParser.Parser")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An elegant parser for Visual Studio solution files")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Open Systems Technologies")]
 [assembly: AssemblyProduct("Onion.SolutionParser.Parser")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
