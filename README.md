@@ -3,6 +3,10 @@ SolutionParser
 
 SolutionParser parses a Visual Studio solution file into an object structure.
 
+Get it on NuGet
+---------------
+`Install-Package Onion.SolutionParser.Parser`
+
 Usage
 -----
 
