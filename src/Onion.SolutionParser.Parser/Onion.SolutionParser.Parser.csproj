@@ -41,13 +41,17 @@
   <ItemGroup>
     <Compile Include="GlobalSectionParser.cs" />
     <Compile Include="ISolutionItemParser.cs" />
+    <Compile Include="ISolutionParser.cs" />
     <Compile Include="Model\GlobalSection.cs" />
+    <Compile Include="Model\ISolution.cs" />
     <Compile Include="Model\ISolutionItem.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\Solution.cs" />
     <Compile Include="ProjectParser.cs" />
     <Compile Include="Model\ProjectSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionItemParserBase.cs" />
+    <Compile Include="SolutionParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
