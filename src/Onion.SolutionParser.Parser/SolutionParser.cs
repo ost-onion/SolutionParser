@@ -5,7 +5,7 @@ namespace Onion.SolutionParser.Parser
 {
     public class SolutionParser : ISolutionParser
     {
-        private readonly string solutionContents;
+        private readonly string _solutionContents;
 
         public SolutionParser(string path)
         {
@@ -13,7 +13,7 @@ namespace Onion.SolutionParser.Parser
                 throw new FileNotFoundException(string.Format("Solution file {0} does not exist", path));
             using (var reader = new StreamReader(path))
             {
-                solutionContents = reader.ReadToEnd();
+                _solutionContents = reader.ReadToEnd();
             }
         }
 
@@ -21,8 +21,8 @@ namespace Onion.SolutionParser.Parser
         {
             return new Solution
                 {
-                    Global = (new GlobalSectionParser(solutionContents)).Parse(),
-                    Projects = (new ProjectParser(solutionContents)).Parse()
+                    Global = (new GlobalSectionParser(_solutionContents)).Parse(),
+                    Projects = (new ProjectParser(_solutionContents)).Parse()
                 };
         }
 
