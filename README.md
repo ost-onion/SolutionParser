@@ -124,3 +124,9 @@ var parser = new ProjectParser(solutionContents);
 //IEnumerable<Project>
 var projects = parser.Parse();
 ```
+
+Running unit tests
+------------------
+SolutionParser assumes package restore is enabled. To run the tests
+just clone the project, hit build, and run the unit tests with your
+favorite NUnit runner.
