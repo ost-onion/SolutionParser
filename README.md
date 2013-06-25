@@ -98,7 +98,7 @@ SolutionParser contains three parsers for more or less detailed access to a solu
 The `SolutionParser` class is the most direct parser, and returns a fully composed `Solution` object.
 
 ```csharp
-var solution = SolutionParser.Parse('/path/to/solution.sln');
+var solution = SolutionParser.Parse("/path/to/solution.sln");
 ```
 
 ###GlobalSectionParser###
