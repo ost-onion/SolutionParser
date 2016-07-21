@@ -14,7 +14,7 @@ namespace Onion.SolutionParser.Parser
             
         }
 
-        public new IEnumerable<GlobalSection> Parse()
+        public override IEnumerable<GlobalSection> Parse()
         {
             var match = GlobalPattern.Match(SolutionContents);
             while (match.Success)
