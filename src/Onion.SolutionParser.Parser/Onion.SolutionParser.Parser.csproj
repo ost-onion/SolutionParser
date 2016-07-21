@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSectionParser.cs" />
+    <Compile Include="HeaderParser.cs" />
     <Compile Include="ISolutionItemParser.cs" />
     <Compile Include="ISolutionParser.cs" />
     <Compile Include="Model\GlobalSection.cs" />

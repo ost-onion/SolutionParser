@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\GlobalSectionParserTest.cs" />
+    <Compile Include="Parser\HeaderParserTest.cs" />
     <Compile Include="Parser\ProjectParserTest.cs" />
     <Compile Include="Parser\SolutionParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

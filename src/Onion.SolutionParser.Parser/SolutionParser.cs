@@ -21,6 +21,7 @@ namespace Onion.SolutionParser.Parser
         {
             return new Solution
                 {
+                    Header = (new HeaderParser(_solutionContents)).Parse(),
                     Global = (new GlobalSectionParser(_solutionContents)).Parse(),
                     Projects = (new ProjectParser(_solutionContents)).Parse()
                 };
