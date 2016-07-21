@@ -16,7 +16,7 @@ namespace Onion.SolutionParser.Parser
             
         }
         
-        public new IEnumerable<Project> Parse()
+        public override IEnumerable<Project> Parse()
         {
             var match = ProjectPattern.Match(SolutionContents);
             while (match.Success)
